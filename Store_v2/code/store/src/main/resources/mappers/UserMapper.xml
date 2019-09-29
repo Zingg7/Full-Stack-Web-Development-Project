@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML文件用于配置哪个接口中抽象方法对应的SQL语句 -->
+<mapper namespace="cn.tedu.store.mapper.UserMapper">
+
+	<!-- 用户注册的方法 -->
+	<!-- Integer addnew(User user) -->
+	<insert id="addnew"
+		useGeneratedKeys="true"
+		keyProperty="uid">
+		INSERT INTO t_user(
+				username, password,
+				salt,is_delete,
+				phone,email,
+				gender,avatar,
+				created_user,created_time,
+				modified_user,modified_time
+			) VALUES(
+				#{username}, #{password},
+				#{salt},#{isDelete},
+				#{phone},#{email},
+				#{gender},#{avatar},
+				#{createdUser},#{createdTime},
+				#{modifiedUser},#{modifiedTime}
+			)
+	</insert>
+	
+	<!-- 根据用户名查询用户 -->
+	<!-- User findByUsername(String username) -->
+	<select id="findByUsername" 
+		resultType="cn.tedu.store.entity.User">
+		SELECT 
+			uid, username,
+			password, avatar,
+			salt, is_delete as isDelete
+		FROM 
+			t_user 
+		WHERE 
+			username=#{username}
+	</select>
+
+</mapper>
+
+
+
+
+
+
