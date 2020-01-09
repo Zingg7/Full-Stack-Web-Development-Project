@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day09</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>47. 商品-实体类</h3>
+<p>在<code>cn.tedu.store.entity.Product</code>类，继承<code>BaseEntity</code>。</p>
+<h3>48. 商品-热销排行-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>热销排行，是按照商品的<code>priority</code>值进行排序，值越高，越优先显示，当前用例中显示<code>priority</code>前4的商品的信息。</p>
+<pre><code>select 
+    id,title,
+    price,image
+from 
+    t_product 
+where 
+    status=1 and num &gt; 0 
+order by 
+    priority desc 
+    limit 0,4;
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.mapper.ProductMapper</code>接口，并添加以下抽象方法：</p>
+<pre><code>List&lt;Product&gt; findHotList();
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>src/main/resources/mappers</code>下创建<code>ProductMapper.xml</code>文件，确定主节点的<code>namespace</code>的值是正确的，并添加上面的抽象方法的映射：</p>
+<pre><code>&lt;!-- 查询优先级排行前4位的商品数据 --&gt;
+&lt;!-- List&lt;Product&gt; findHotList() --&gt;
+&lt;select id=&quot;findHotList&quot;
+resultType=&quot;cn.tedu.store.entity.Product&quot;&gt;
+    select 
+        id,title,
+        price,image
+    from 
+        t_product
+    where 
+        status=1 and num &gt; 0 
+    order by 
+        priority desc 
+        limit 0,4
+&lt;/select&gt;
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void findHotList() {
+    List&lt;Product&gt; list=mapper.findHotList();
+    for(Product p:list) {
+        System.err.println(p);
+    }
+}
+</code></pre>
+
+<h3>49. 商品-热销排行-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>无</p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.IProductService</code>接口，并添加抽象方法：</p>
+<pre><code>List&lt;Product&gt; getHotList();
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.impl.ProductServiceImpl</code>类，实现<code>IProductService</code>接口：</p>
+<p>将持久层的抽象方法复制过来进行私有实现：</p>
+<pre><code>/**
+ * 查询优先级排行前4位的商品数据
+ * @return 优先级排行前4位的商品数据
+ */
+private List&lt;Product&gt; findHotList(){
+    return mapper.findHotList();
+}
+</code></pre>
+
+<p>实现接口中定义的抽象方法：</p>
+<pre><code>@Override
+public List&lt;Product&gt; getHotList() {
+    return findHotList();
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void getHotList() {
+    List&lt;Product&gt; list=service.getHotList();
+    for(Product p:list) {
+        System.err.println(p);
+    }
+}
+</code></pre>
+
+<h3>50. 商品-热销排行-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>无</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/products/hot
+请求参数：无
+请求方式：GET
+响应数据：JsonResult&lt;List&lt;Product&gt;&gt;
+是否拦截：不拦截
+需要放行: /web/index.html
+         /products/**
+</code></pre>
+
+<p><strong>(c) 处理请求</strong></p>
+<p>开发<code>cn.tedu.store.controller.ProudctController</code>，继承<code>BaseController</code>，添加以下方法：</p>
+<pre><code>@GetMapping(&quot;hot&quot;)
+public JsonResult&lt;List&lt;Product&gt;&gt; getHotList(){
+    // 查询
+    // 返回
+}
+</code></pre>
+
+<p>代码实现：</p>
+<pre><code>@GetMapping(&quot;hot&quot;)
+public JsonResult&lt;List&lt;Product&gt;&gt; getHotList(){
+    // 查询
+    List&lt;Product&gt; data = service.getHotList();
+    // 返回
+    return new JsonResult&lt;List&lt;Product&gt;&gt;(SUCCESS, data);
+}
+</code></pre>
+
+<p>在浏览器使用<code>localhost:8080/products/hot</code>进行测试</p>
+<h3>51. 商品-热销排行-前端界面</h3>
+<h3>52. 商品-商品详情-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>显示商品相应，是根据商品的id查询商品数据：</p>
+<pre><code>select * from t_product where id=?
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>ProductMapper.java</code>中添加抽象方法：</p>
+<pre><code>Product findById(Integer id);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<pre><code>&lt;resultMap id=&quot;ProductEntityMap&quot; 
+    type=&quot;cn.tedu.store.entity.Product&quot; &gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+    &lt;result column=&quot;category_id&quot; property=&quot;categoryId&quot;/&gt;    
+    &lt;result column=&quot;item_type&quot; property=&quot;itemType&quot;/&gt;    
+    &lt;result column=&quot;title&quot; property=&quot;title&quot;/&gt;   
+    &lt;result column=&quot;sell_point&quot; property=&quot;sellPoint&quot;/&gt;  
+    &lt;result column=&quot;price&quot; property=&quot;price&quot;/&gt;   
+    &lt;result column=&quot;num&quot; property=&quot;num&quot;/&gt;   
+    &lt;result column=&quot;image&quot; property=&quot;image&quot;/&gt;   
+    &lt;result column=&quot;status&quot; property=&quot;status&quot;/&gt; 
+    &lt;result column=&quot;priority&quot; property=&quot;priority&quot;/&gt; 
+    &lt;result column=&quot;created_user&quot; property=&quot;createdUser&quot; /&gt;
+    &lt;result column=&quot;created_time&quot; property=&quot;createdTime&quot; /&gt;
+    &lt;result column=&quot;modified_user&quot; property=&quot;modifiedUser&quot; /&gt;
+    &lt;result column=&quot;modified_time&quot; property=&quot;modifiedTime&quot; /&gt;
+&lt;/resultMap&gt;
+
+&lt;!-- 根据商品id查商品数据 --&gt;
+&lt;!-- Product findById(Integer id) --&gt;
+&lt;select id=&quot;findById&quot;
+    resultMap=&quot;ProductEntityMap&quot;&gt;
+    select 
+        * 
+    from 
+        t_product 
+    where 
+        id=#{id}
+&lt;/select&gt;
+</code></pre>
+
+<p>完成后，开发相应的测试用例：</p>
+<pre><code>@Test
+public void findById() {
+    System.err.println(mapper.findById(10000001));
+}
+</code></pre>
+
+<h3>53. 商品-商品详情-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>开发<code>ProductNotFoundException</code>，继承<code>ServiceException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>IProductService</code>中提供以下抽象方法：</p>
+<pre><code>Product getById(Integer id);
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>在<code>ProductServiceImpl</code>中：</p>
+<p>提供持久层方法的私有实现：</p>
+<pre><code>private Product findById(Integer id) {
+    return mapper.findById(id);
+}
+</code></pre>
+
+<p>实现接口中定义的抽象方法：</p>
+<pre><code>@Override
+public Product getById(Integer id) {
+    // 使用id查商品数据
+    Product product=findById(id);
+    if(product==null) {
+        throw new ProductNotFoundException(&quot;显示商品详情异常！未找到商品数据&quot;);
+    }
+
+    // 将不需要给用户的数据设为null
+    product.setPriority(null);
+    product.setStatus(null);
+    product.setCreatedUser(null);
+    product.setCreatedTime(null);
+    product.setModifiedUser(null);
+    product.setModifiedTime(null);
+
+    return product;
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void getById() {
+    try {
+        Product product=service.getById(100001);
+        System.err.println(product);
+    } catch (ServiceException e) {
+        System.err.println(e.getClass().getName());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>54. 商品-商品详情-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>在<code>BaseController</code>中添加对<code>ProductNotFoundException</code>的处理逻辑</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/products/{id}/get
+请求参数：PathVariable(&quot;id&quot;)Integer id
+请求方式：GET
+相应数据：JsonResult&lt;Product&gt;
+</code></pre>
+
+<p><strong>(c) 处理请求</strong></p>
+<pre><code>@GetMapping(&quot;{id}/get&quot;)
+public JsonResult&lt;Product&gt; getById(@PathVariable(&quot;id&quot;)Integer id){
+    Product product=service.getById(id);
+    return new JsonResult&lt;Product&gt;(SUCCESS,product);
+}
+</code></pre>
+
+<p>测试：在浏览器使用<code>localhost:8080/products/10000001/get</code></p>
+<p>将<code>/web/product.html</code>添加到白名单中</p>
+<h3>55. 商品-商品详情-前端界面</h3>
+<p>在<code>/web/product.html</code>页面中引入<code>jquery-getUrlParam.js</code>文件</p>
+<pre><code>&lt;script src=&quot;../js/jquery-getUrlParam.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<h3>56. 购物车-分析</h3>
+<p>购物车：添加，修改数量(增)</p>
+<p>数据库表：</p>
+<pre><code>CREATE TABLE t_cart(
+    cid INT AUTO_INCREMENT COMMENT '购物车id',
+    uid INT COMMENT '用户id',
+    pid INT COMMENT '商品id',
+    price BIGINT COMMENT '商品单价',
+    num INT COMMENT '数量',
+    created_user VARCHAR(50) COMMENT '创建用户',
+    created_time DATETIME COMMENT '创建时间',
+    modified_user VARCHAR(50) COMMENT '最后修改用户',
+    modified_time DATETIME COMMENT '最后修改时间',
+    PRIMARY KEY (cid)
+)DEFAULT CHARSET=utf8;
+</code></pre>
+
+<p>开发对应的实体类：</p>
+<p>创建<code>cn.tedu.store.entity.Cart</code>实体类，继承<code>BaseEntity</code></p>
+<h3>57. 购物车-添加-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>将购物车数据添加到数据库，是插入操作：</p>
+<pre><code>insert into t_cart (除cid以外所有字段) values (...)
+</code></pre>
+
+<p>用户执行添加购物车的操作，需要先判断用户当前购物车中是否已经有该商品，如果有，应该修改该购物车记录中的商品数量：</p>
+<pre><code>update t_cart set num=?(新值),modified_user=?, modefied_time=? where cid=?
+</code></pre>
+
+<p>判断用户当前购物车中是否已经有该商品，是一次查询操作：</p>
+<pre><code>select * from t_cart where uid=? and pid=?
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.mapper.CartMapper</code>接口，并添加以下3个抽象方法：</p>
+<pre><code>Integer saveCart(Cart cart);
+
+Integer updateNum(@Param(&quot;cid&quot;) Integer cid, @Param(&quot;num&quot;) Integer num, @Param(&quot;username&quot;) String username, @Param(&quot;modifiedTime&quot;) Date modifiedTime);
+
+Cart getByUidAndPid(@Param(&quot;uid&quot;) Integer uid,@Param(&quot;pid&quot;) Integer pid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>复制得到<code>CartMapper.xml</code>，删除除主节点以外的所有子节点，保证<code>namespace</code>是正确的：</p>
+<p>添加<code>&lt;resultMap id=&quot;CartEntityMap&quot;&gt;</code>：</p>
+<p>添加以上3个抽象方法的映射：</p>
+<p>开发3个抽象方法对应的测试用例：</p>
+<h3>58. 购物车-添加-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>查询没有对应的异常</p>
+<p>更新和插入操作对应<code>UpdateException</code>和<code>InsertException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.ICartService</code>接口，添加抽象方法：</p>
+<pre><code>void createCart(Integer num,Integer uid, Integer pid,String username)throws UpdateException,InsertException;
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.impl.CartServiceImpl</code>类，继承<code>ICartService</code>:</p>
+<p>提供持久层3个抽象方法的私有实现：</p>
+<p>添加抽象方法：</p>
+<pre><code>public void createCart(Integer num,Integer uid, Integer pid,String username)throws UpdateException,InsertException{
+    // 使用uid和pid查询是否有购物车数据
+    // 没有：
+    // 创建一个Cart对象
+    // 手动添加pid,uid,num到cart
+    // 使用pid查询商品价格
+    // 手动添加商品价格到cart
+    // 手动添加4个日志数据到cart
+    // 将cart添加到数据库
+
+    // 有：
+    // 从查询结果中获取cid
+    // 从查询结果中获取原购物车中的数量
+    // 计算出新的商品数量=原数量+num
+    // 执行更新操作
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<h3>-------------------------------</h3>
+<h3>缓存</h3>
+<p>将一组数据临时保存在内存中，再后续的多次查询中，不再从硬盘上读取数据，而是直接返回内存中保存的数据。</p>
+<p>Mysql的缓存机制：</p>
+<pre><code>1. 将用户查询的SQL语句作为缓存的key,将查询到的结果作为value，保存再内存中
+2. 如果用户对这张表执行了更新操作(增删改)，则清空该缓存数据
+3. 随着在用户访问量的增加，缓存的有效期越来越短，因此mysql在较新的版本中已经不再提供缓存机制。
+</code></pre>
+
+<p>MyBatis提供的缓存机制：</p>
+<pre><code>mybatis提供了两级缓存机制：
+一级缓存：是SqlSession级别，以用户的一次访问为单位。默认执行，不需要配置。
+
+二级缓存：是namespace级别，不同用户可以共享缓存数据。使用时，在对应的`xxxMapper.xml`的根节点下添加`&lt;cache&gt;&lt;/cache&gt;`
+
+mybaits使用`&lt;resultMap&gt;`节点下的`&lt;id&gt;`节点的值作为缓存数据的`key`，因此在开发`&lt;resultMap&gt;`节点时，一般将数据的主键字段作为`&lt;id&gt;`节点的值，以唯一标识该缓存数据。
+
+如果项目的业务量不大，是没有必要使用缓存机制的
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
