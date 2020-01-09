@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML文件用于配置哪个接口中抽象方法对应的SQL语句 -->
+<mapper namespace="cn.tedu.store.mapper.ProductMapper">
+	
+	<resultMap id="ProductEntityMap" 
+		type="cn.tedu.store.entity.Product" >
+		<id column="id" property="id"></id>
+		<result column="category_id" property="categoryId"/>	
+		<result column="item_type" property="itemType"/>	
+		<result column="title" property="title"/>	
+		<result column="sell_point" property="sellPoint"/>	
+		<result column="price" property="price"/>	
+		<result column="num" property="num"/>	
+		<result column="image" property="image"/>	
+		<result column="status" property="status"/>	
+		<result column="priority" property="priority"/>	
+		<result column="created_user" property="createdUser" />
+		<result column="created_time" property="createdTime" />
+		<result column="modified_user" property="modifiedUser" />
+		<result column="modified_time" property="modifiedTime" />
+	</resultMap>
+	
+	
+	<!-- 查询优先级排行前4位的商品数据 -->
+	<!-- List<Product> findHotList() -->
+	<select id="findHotList"
+		resultType="cn.tedu.store.entity.Product">
+		select 
+			id,title,
+			price,image
+		from 
+			t_product
+		where 
+			status=1 and num > 0 
+		order by 
+			priority desc 
+			limit 0,4
+	</select>
+	
+	<!-- 根据商品id查商品数据 -->
+	<!-- Product findById(Integer id) -->
+	<select id="findById"
+		resultMap="ProductEntityMap">
+		select 
+			* 
+		from 
+			t_product 
+		where 
+			id=#{id}
+	</select>
+
+</mapper>
+
+
+
+
+
+

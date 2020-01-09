@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML文件用于配置哪个接口中抽象方法对应的SQL语句 -->
+<mapper namespace="cn.tedu.store.mapper.CartMapper">
+
+	<resultMap id="CartEntityMap" 
+		type="cn.tedu.store.entity.Cart" >
+		<id column="cid" property="cid"/>	
+		<result column="pid" property="pid" />
+		<result column="uid" property="uid" />		
+		<result column="price" property="price" />		
+		<result column="num" property="num" />		
+		<result column="created_user" property="createdUser" />	
+		<result column="created_time" property="createdTime" />	
+		<result column="modified_user" property="modifiedUser" />	
+		<result column="modified_time" property="modifiedTime" />	
+	</resultMap>
+
+
+
+	<!-- 添加一条购物车记录 -->
+	<!-- Integer saveCart(Cart cart) -->
+	<insert id="saveCart"
+		useGeneratedKeys="true"
+		keyProperty="cid">
+		insert into 
+			t_cart (
+				uid, pid,
+				price, num,
+				created_user, created_time,
+				modified_user, modified_time
+			) 
+		values (
+				#{uid}, #{pid},
+				#{price}, #{num},
+				#{createdUser}, #{createdTime},
+				#{modifiedUser}, #{modifiedTime}
+		)
+	</insert>
+	
+	
+	<!-- 更新一条购物车记录中的商品数量 -->
+	<!-- Integer updateNum(
+			@Param("cid") Integer cid, 
+			@Param("num") Integer num, 
+			@Param("username") String username,
+			@Param("modifiedTime") Date modifiedTime) -->
+	<update id="updateNum">
+		update 
+			t_cart 
+		set 
+			num=#{num},
+			modified_user=#{username},
+			modified_time=#{modifiedTime} 
+		where 
+			cid=#{cid}
+	</update>
+	
+	<!-- 根据用户id和商品id查购物车记录 -->
+	<!-- Cart getByUidAndPid(
+			@Param("uid") Integer uid,
+			@Param("pid") Integer pid) -->
+	<select id="getByUidAndPid"
+		resultMap="CartEntityMap">
+		select 
+			* 
+		from 
+			t_cart 
+		where 
+			uid=#{uid} 
+		and 
+			pid=#{pid}
+	</select>
+	
+	
+	<!-- 查询一个用户的所有购物车记录 -->
+	<!-- List<CartVO> findCartList(Integer uid) -->
+	<select id="findCartList"
+		resultType="cn.tedu.store.entity.CartVO">
+		select  
+			t1.cid, t1.pid, 
+			t2.image, t2.title, 
+			t2.price as realPrice, t1.price, 
+			t1.num
+		from 
+			t_cart t1 left join t_product t2
+		on
+			t1.pid = t2.id
+		where
+			t1.uid=#{uid}
+		order by
+			t1.modified_time desc;
+	</select>
+	
+	<!-- 根据cid查购物车数据 -->
+	<!-- Cart findByCid(Integer cid) -->
+	<select id="findByCid"
+		resultMap="CartEntityMap">
+		select 
+			* 
+		from 
+			t_cart 
+		where 
+			cid=#{cid}
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+

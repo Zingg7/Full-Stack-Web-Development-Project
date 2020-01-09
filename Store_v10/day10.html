@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day10</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>56. 购物车-分析</h3>
+<p>购物车：添加，修改数量(增)</p>
+<p>数据库表：</p>
+<pre><code>CREATE TABLE t_cart(
+    cid INT AUTO_INCREMENT COMMENT '购物车id',
+    uid INT COMMENT '用户id',
+    pid INT COMMENT '商品id',
+    price BIGINT COMMENT '商品单价',
+    num INT COMMENT '数量',
+    created_user VARCHAR(50) COMMENT '创建用户',
+    created_time DATETIME COMMENT '创建时间',
+    modified_user VARCHAR(50) COMMENT '最后修改用户',
+    modified_time DATETIME COMMENT '最后修改时间',
+    PRIMARY KEY (cid)
+)DEFAULT CHARSET=utf8;
+</code></pre>
+
+<p>开发对应的实体类：</p>
+<p>创建<code>cn.tedu.store.entity.Cart</code>实体类，继承<code>BaseEntity</code>：</p>
+<pre><code>public class Cart extends BaseEntity {
+    private Integer cid;
+    private Integer uid;
+    private Integer pid;
+    private Long price;
+    private Integer num;
+    //GET/SET/基于cid生成hashCode和equals/toString
+}
+</code></pre>
+
+<h3>57. 购物车-添加-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>将购物车数据添加到数据库，是插入操作：</p>
+<pre><code>insert into t_cart (除cid以外所有字段) values (...)
+</code></pre>
+
+<p>用户执行添加购物车的操作，需要先判断用户当前购物车中是否已经有该商品，如果有，应该修改该购物车记录中的商品数量：</p>
+<pre><code>update t_cart set num=?(新值),modified_user=?, modified_time=? where cid=?
+</code></pre>
+
+<p>判断用户当前购物车中是否已经有该商品，是一次查询操作：</p>
+<pre><code>select * from t_cart where uid=? and pid=?
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.mapper.CartMapper</code>接口，并添加以下3个抽象方法：</p>
+<pre><code>Integer saveCart(Cart cart);
+
+Integer updateNum(@Param(&quot;cid&quot;) Integer cid, @Param(&quot;num&quot;) Integer num, @Param(&quot;username&quot;) String username, @Param(&quot;modifiedTime&quot;) Date modifiedTime);
+
+Cart getByUidAndPid(@Param(&quot;uid&quot;) Integer uid,@Param(&quot;pid&quot;) Integer pid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>复制得到<code>CartMapper.xml</code>，删除除主节点以外的所有子节点，保证<code>namespace</code>是正确的：</p>
+<p>添加<code>&lt;resultMap id=&quot;CartEntityMap&quot;&gt;</code>：</p>
+<pre><code>&lt;resultMap id=&quot;CartEntityMap&quot; 
+    type=&quot;cn.tedu.store.entity.Cart&quot; &gt;
+    &lt;id column=&quot;cid&quot; property=&quot;cid&quot;/&gt;   
+    &lt;result column=&quot;pid&quot; property=&quot;pid&quot; /&gt;
+    &lt;result column=&quot;uid&quot; property=&quot;uid&quot; /&gt;      
+    &lt;result column=&quot;price&quot; property=&quot;price&quot; /&gt;      
+    &lt;result column=&quot;num&quot; property=&quot;num&quot; /&gt;      
+    &lt;result column=&quot;created_user&quot; property=&quot;createdUser&quot; /&gt; 
+    &lt;result column=&quot;created_time&quot; property=&quot;createdTime&quot; /&gt; 
+    &lt;result column=&quot;modified_user&quot; property=&quot;modifiedUser&quot; /&gt;   
+    &lt;result column=&quot;modified_time&quot; property=&quot;modifiedTime&quot; /&gt;   
+&lt;/resultMap&gt;
+</code></pre>
+
+<p>添加以上3个抽象方法的映射：</p>
+<pre><code>&lt;!-- 添加一条购物车记录 --&gt;
+&lt;!-- Integer saveCart(Cart cart) --&gt;
+&lt;insert id=&quot;saveCart&quot;
+    useGeneratedKeys=&quot;true&quot;
+    keyProperty=&quot;cid&quot;&gt;
+    insert into 
+        t_cart (
+            uid, pid,
+            price, num,
+            created_user, created_time,
+            modified_user, modified_time
+        ) 
+    values (
+            #{uid}, #{pid},
+            #{price}, #{num},
+            #{createdUser}, #{createdTime},
+            #{modifiedUser}, #{modifiedTime}
+    )
+&lt;/insert&gt;
+
+
+&lt;!-- 更新一条购物车记录中的商品数量 --&gt;
+&lt;!-- Integer updateNum(
+        @Param(&quot;cid&quot;) Integer cid, 
+        @Param(&quot;num&quot;) Integer num, 
+        @Param(&quot;username&quot;) String username,
+        @Param(&quot;modifiedTime&quot;) Date modifiedTime) --&gt;
+&lt;update id=&quot;updateNum&quot;&gt;
+    update 
+        t_cart 
+    set 
+        num=#{num},
+        modified_user=#{username},
+        modified_time=#{modifiedTime} 
+    where 
+        cid=#{cid}
+&lt;/update&gt;
+
+&lt;!-- 根据用户id和商品id查购物车记录 --&gt;
+&lt;!-- Cart getByUidAndPid(
+        @Param(&quot;uid&quot;) Integer uid,
+        @Param(&quot;pid&quot;) Integer pid) --&gt;
+&lt;select id=&quot;getByUidAndPid&quot;
+    resultMap=&quot;CartEntityMap&quot;&gt;
+    select 
+        * 
+    from 
+        t_cart 
+    where 
+        uid=#{uid} 
+    and 
+        pid=#{pid}
+&lt;/select&gt;
+</code></pre>
+
+<p>开发3个抽象方法对应的测试用例：</p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CartMapperTests {
+
+    @Autowired
+    CartMapper mapper;
+
+    @Test
+    public void saveCart() {
+        Cart cart=new Cart();
+        cart.setUid(10);
+        cart.setPid(10000001);
+        cart.setPrice(1000L);
+        cart.setNum(20);
+        Integer row=mapper.saveCart(cart);
+        System.err.println(row);
+    }
+
+    @Test
+    public void updateNum() {
+        Integer row=mapper.updateNum(1, 50, &quot;令狐冲&quot;, new Date());
+        System.err.println(row);
+    }
+
+    @Test
+    public void getByUidAndPid() {
+        Cart cart=mapper.getByUidAndPid(10, 10000001);
+        System.err.println(cart);
+    }
+
+}
+</code></pre>
+
+<h3>58. 购物车-添加-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>查询没有对应的异常</p>
+<p>更新和插入操作对应<code>UpdateException</code>和<code>InsertException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.ICartService</code>接口，添加抽象方法：</p>
+<pre><code>void createCart(Integer num,Integer uid, Integer pid,String username)throws UpdateException,InsertException;
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.impl.CartServiceImpl</code>类，继承<code>ICartService</code>:</p>
+<p>提供持久层3个抽象方法的私有实现：</p>
+<pre><code>/**
+ *  添加一条购物车记录
+ * @param cart 购物车记录
+ * @return 受影响的行数
+ */
+private void saveCart(Cart cart) throws InsertException {
+    Integer row=mapper.saveCart(cart);
+    if(row!=1) {
+        throw new InsertException(&quot;添加购物车异常！请联系管理员&quot;);
+    }
+}
+
+/**
+ *  更新一条购物车记录中的商品数量
+ * @param cid 购物车记录id
+ * @param num 商品数量
+ * @param username 最后修改人姓名
+ * @param modifiedTime 最后修改时间
+ * @return 受影响的行数
+ */
+private void updateNum(
+        Integer cid, Integer num, 
+        String username,Date modifiedTime) throws UpdateException {
+    Integer row=mapper.updateNum(cid, num, username, modifiedTime);
+    if(row!=1) {
+        throw new UpdateException(&quot;添加购物车异常！更新数量失败！&quot;);
+    }
+};
+
+
+/**
+ * 根据用户id和商品id查购物车记录
+ * @param uid 用户id
+ * @param pid 商品id
+ * @return 购物车记录 或 null
+ */
+private Cart getByUidAndPid(
+        Integer uid,Integer pid) {
+    return mapper.getByUidAndPid(uid, pid);
+}
+</code></pre>
+
+<p>添加抽象方法：</p>
+<pre><code>public void createCart(Integer num,Integer uid, Integer pid,String username)throws UpdateException,InsertException{
+    // 使用uid和pid查询是否有购物车数据
+    // 没有：
+    // 创建一个Cart对象
+    // 手动添加pid,uid,num到cart
+    // 使用pid查询商品价格
+    // 手动添加商品价格到cart
+    // 手动添加4个日志数据到cart
+    // 将cart添加到数据库
+
+    // 有：
+    // 从查询结果中获取cid
+    // 从查询结果中获取原购物车中的数量
+    // 计算出新的商品数量=原数量+num
+    // 执行更新操作
+}
+</code></pre>
+
+<p>代码实现如下：</p>
+<pre><code>@Autowired
+CartMapper mapper;
+
+@Autowired
+IProductService productService;
+
+@Override
+public void createCart(Integer num, Integer uid, Integer pid, String username)
+        throws UpdateException, InsertException {
+    // 使用uid和pid查询是否有购物车数据
+    Cart result=getByUidAndPid(uid, pid);
+    // 没有：
+    if(result==null) {
+        // 创建一个Cart对象
+        Cart cart=new Cart();
+        // 手动添加pid,uid,num到cart
+        cart.setPid(pid);
+        cart.setUid(uid);
+        cart.setNum(num);
+        // 使用pid查询商品价格
+        Long price=productService.getById(pid).getPrice();
+        // 手动添加商品价格到cart
+        cart.setPrice(price);
+        // 手动添加4个日志数据到cart
+        Date now=new Date();
+        cart.setCreatedUser(username);
+        cart.setCreatedTime(now);
+        cart.setModifiedUser(username);
+        cart.setModifiedTime(now);
+        // 将cart添加到数据库
+        saveCart(cart);
+        return;
+    }
+
+    // 有：
+    // 从查询结果中获取cid
+    Integer cid=result.getCid();
+    // 从查询结果中获取原购物车中的数量
+    Integer oldNum=result.getNum();
+    // 计算出新的商品数量=原数量+num
+    int newNum=oldNum+num;
+    // 执行更新操作
+    updateNum(cid, newNum, username, new Date());
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CartServiceTests {
+
+    @Autowired
+    ICartService service;
+
+    @Test
+    public void createCart() {
+        try {
+            service.createCart(33, 10, 10000017, &quot;令狐冲&quot;);
+        }catch(ServiceException e) {
+            System.err.println(e.getClass().getName());
+            System.err.println(e.getMessage());
+        }
+    }
+
+}   
+</code></pre>
+
+<h3>59. 购物车-添加-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>无</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/carts/create_cart
+请求参数：Integer num, Integer pid, HttpSession session
+请求方式：POST
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>(c) 处理请求</strong></p>
+<p>开发<code>cn.tedu.store.controller.CartController</code>，继承<code>BaseController</code>，类上添加<code>@RestController</code>，<code>@RequestMapping(&quot;carts&quot;)</code>。</p>
+<p>开发对应的方法：</p>
+<p>通过浏览器地址栏进行测试：<code>localhost:8080/carts/create_cart?num=30&amp;pid=10000001</code>,该测试需要登录之后才能做。测试后，将方法前的<code>@RequestMapping</code>修改为<code>@PostMapping</code></p>
+<h3>60. 购物车-添加-前端界面</h3>
+<h3>61. 购物车-列表-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>将购物车列表中所需展示的数据从数据库中查询出来：
+	select<br />
+		t1.cid, t1.pid, t2.image, t2.title, t2.price, t1.price, t1.num
+	from 
+		t<em>cart t1 left join t</em>product t2
+	on
+		t1.pid = t2.id and t1.uid=?
+	order by
+		t1.modified_time desc;</p>
+<p>如何生成一个复杂的SQL：</p>
+<pre><code>查哪些列：t1.cid, t1.pid, t2.image, t2.title, t2.price(真实), t1.price(添加时), t1.num(购物车中商品的数量)
+查哪张表：t_cart t1 left join t_product t2
+限定条件：t1.pid = t2.id and t1.uid=?
+排序：t1.modified_time desc
+
+select  
+    t1.cid, t1.pid, t2.image, t2.title, t2.price, t1.price, t1.num
+from 
+    t_cart t1 left join t_product t2
+on
+    t1.pid = t2.id 
+where
+    t1.uid=?
+order by
+    t1.modified_time desc;
+</code></pre>
+
+<p>需要开发一个<code>cn.tedu.store.entity.CartVO</code>类，封装本次查询的结果：</p>
+<pre><code>public class CartVO{
+    private Integer cid;
+    private Integer pid;
+    private String image;
+    private String title;
+    private Long realPrice;
+    private Long price;
+    private Integer num;
+
+    // GET/SET/cid-hashcode,equals/toString
+}
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>CartMapper.java</code>中添加抽象方法：</p>
+<p>List<CartVO> findCartList(Integer uid);</p>
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>CartMapper.xml</code>中配置以上方法的映射：</p>
+<pre><code>&lt;!-- 查询一个用户的所有购物车记录 --&gt;
+&lt;!-- List&lt;CartVO&gt; findCartList(Integer uid) --&gt;
+&lt;select id=&quot;findCartList&quot;
+    resultType=&quot;cn.tedu.store.entity.CartVO&quot;&gt;
+    select  
+        t1.cid, t1.pid, 
+        t2.image, t2.title, 
+        t2.price as realPrice, t1.price, 
+        t1.num
+    from 
+        t_cart t1 left join t_product t2
+    on
+        t1.pid = t2.id
+    where
+        t1.uid=#{uid}
+    order by
+        t1.modified_time desc;
+&lt;/select&gt;
+</code></pre>
+
+<p>并开发对应的测试用例：</p>
+<pre><code>@Test
+public void findCartList() {
+    List&lt;CartVO&gt; list=mapper.findCartList(1);
+    for(CartVO vo:list) {
+        System.err.println(vo);
+    }
+}
+</code></pre>
+
+<h3>62. 购物车-列表-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>无</p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>ICartService</code>中添加抽象方法：</p>
+<pre><code>List&lt;CartVO&gt; getCartList(Integer uid);
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>在<code>CartServiceImpl</code>中提供持久层抽象方法的私有实现：</p>
+<pre><code>/**
+ *   查询一个用户的所有购物车记录
+ * @param uid 用户id
+ * @return 购物车记录的集合
+ */
+private List&lt;CartVO&gt; findCartList(Integer uid){
+    return mapper.findCartList(uid);
+}
+</code></pre>
+
+<p>实现接口中定义的抽象方法：</p>
+<pre><code>@Override
+public List&lt;CartVO&gt; getCartList(Integer uid) {
+    return findCartList(uid);
+}
+</code></pre>
+
+<h3>63. 购物车-列表-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>无</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/carts/
+请求参数：HttpSession session
+请求方式：get
+响应数据：JsonResult&lt;List&lt;CartVO&gt;&gt;
+</code></pre>
+
+<p><strong>(c) 处理请求</strong></p>
+<p>在<code>CartController</code>中添加对应的处理逻辑：</p>
+<pre><code>@GetMapping(&quot;/&quot;)
+public JsonResult&lt;List&lt;CartVO&gt;&gt; getCartList(HttpSession session){
+    Integer uid=getUidFromSession(session);
+
+    List&lt;CartVO&gt; list=service.getCartList(uid);
+
+    return new JsonResult&lt;List&lt;CartVO&gt;&gt;(SUCCESS, list);
+}
+</code></pre>
+
+<p>通过浏览器地址栏<code>localhost:8080/carts/</code>进行测试，要求先登录</p>
+<h3>64. 购物车-列表-前端页面</h3>
+<pre><code>$(function() {
+    showList();
+})
+
+function showList(){
+    $(&quot;#cart-list&quot;).empty();
+
+    $.ajax({
+        &quot;url&quot;:&quot;/carts/&quot;,
+        &quot;type&quot;:&quot;get&quot;,
+        &quot;dataType&quot;:&quot;json&quot;,
+        &quot;success&quot;:function(json) {
+            var data=json.data;
+            console.log(data.length);
+
+            for(var i=0;i&lt;data.length;i++){
+
+                var tr='&lt;tr&gt;'+
+                '&lt;td&gt;&lt;input type=&quot;checkbox&quot; class=&quot;ckitem&quot; /&gt;&lt;/td&gt;'+
+                '&lt;td&gt;&lt;img src=&quot;..#{image}collect.png&quot; class=&quot;img-responsive&quot; /&gt;&lt;/td&gt;'+
+                '&lt;td&gt;#{title}&lt;/td&gt;'+
+                '&lt;td&gt;¥&lt;span id=&quot;goodsPrice1&quot;&gt;#{realPrice}&lt;/span&gt;&lt;/td&gt;'+
+                '&lt;td&gt;'+
+                    '&lt;input type=&quot;button&quot; value=&quot;-&quot; class=&quot;num-btn&quot; onclick=&quot;reduceNum(1)&quot; /&gt;'+
+                    '&lt;input id=&quot;goodsCount1&quot; type=&quot;text&quot; size=&quot;2&quot; readonly=&quot;readonly&quot; class=&quot;num-text&quot; value=&quot;#{num}&quot;&gt;'+
+                    '&lt;input class=&quot;num-btn&quot; type=&quot;button&quot; value=&quot;+&quot; onclick=&quot;addNum(1)&quot; /&gt;'+
+                '&lt;/td&gt;'+
+                '&lt;td&gt;&lt;span id=&quot;goodsCast1&quot;&gt;￥#{totalPrice}&lt;/span&gt;&lt;/td&gt;'+
+                '&lt;td&gt;&lt;input type=&quot;button&quot; onclick=&quot;delCartItem(this)&quot; class=&quot;cart-del btn btn-default btn-xs&quot; value=&quot;删除&quot; /&gt;&lt;/td&gt;'+
+                '&lt;/tr&gt;';
+
+                tr=tr.replace(&quot;#{image}&quot;,data[i].image);
+                tr=tr.replace(&quot;#{title}&quot;,data[i].title);
+                tr=tr.replace(&quot;#{realPrice}&quot;,data[i].realPrice);
+                tr=tr.replace(&quot;#{num}&quot;,data[i].num);
+                tr=tr.replace(&quot;#{totalPrice}&quot;,data[i].num*data[i].realPrice);
+
+                // tr=tr.replace(/#{aid}/g,data[i].aid);
+                $(&quot;#cart-list&quot;).append(tr);
+            }
+        }
+      });
+}
+</code></pre>
+
+<h3>65. 购物车-增加商品数量-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>基于cid修改购物车记录中的商品数量属于更新操作，该语句已经存在，可以直接使用:</p>
+<pre><code>update t_cart set num=?, modified_user=?, modified_time=? where cid=?;
+</code></pre>
+
+<p>在执行更新操作之前，需要对数据是否存在，及用户是否有操作权限进行验证：</p>
+<pre><code>select * from t_cart where cid=?
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>CartMapper</code>接口中添加以下抽象方法：</p>
+<pre><code>Cart findByCid(Integer cid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>CartMapper.xml</code>中配置抽象方法的映射：</p>
+<pre><code>&lt;!-- 根据cid查购物车数据 --&gt;
+&lt;!-- Cart findByCid(Integer cid) --&gt;
+&lt;select id=&quot;findByCid&quot;
+    resultMap=&quot;CartEntityMap&quot;&gt;
+    select 
+        * 
+    from 
+        t_cart 
+    where 
+        cid=#{cid}
+&lt;/select&gt;
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void findByCid() {
+    Cart cart=mapper.findByCid(2);
+    System.err.println(cart);
+}
+</code></pre>
+
+<h3>66. 购物车-增加商品数量-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>购物车记录不存在，对应<code>CartNotFoundException</code></p>
+<p>用户没有操作权限，对应<code>AccessDeniedException</code></p>
+<p>更新操作，对应<code>UpdateException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>ICartService</code>中添加以下抽象方法：</p>
+<pre><code>/**
+ *  增加购物车中的商品的数量
+ * @param cid 商品的id
+ * @param num 数量的增量
+ * @param uid 用户的id
+ * @param username 最后修改人姓名
+ */
+void addNum(Integer cid, Integer num, 
+        Integer uid, String username)throws CartNotFoundException,
+        AccessDeniedException, UpdateException;
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>在<code>CartServiceImple</code>提供持久层方法的私有实现：</p>
+<pre><code>/**
+ * 根据cid查购物车数据
+ * @param cid 购物车记录id
+ * @return 购物车数据 或 null
+ */
+private Cart findByCid(Integer cid) {
+    return mapper.findByCid(cid);
+}
+</code></pre>
+
+<p>在<code>CartServiceImple</code>实现对应的抽象方法：</p>
+<pre><code>@Override
+public void addNum(Integer cid, Integer num, Integer uid, String username)
+        throws CartNotFoundException, AccessDeniedException, UpdateException {
+    // 使用cid查购物车记录
+    Cart result=findByCid(cid);
+    // 判断结果是否为null
+    if(result==null) {
+        // 是：CartNotFoundException
+        throw new CartNotFoundException(&quot;增加购物车商品数量异常！记录不存在&quot;);
+    }
+
+    // 判断result中的uid和参数中的uid是否不一致
+    if(!result.getUid().equals(uid)) {
+        // 是：AccessDeniedException
+        throw new AccessDeniedException(&quot;增加购物车商品数量异常！没有操作权限&quot;);
+    }
+
+    // 从result中获取之前的num
+    Integer oldNum=result.getNum();
+    // 计算生成新的num
+    Integer newNum=oldNum+num;
+    // 执行更新操作
+    updateNum(cid, newNum, username, new Date());
+}
+</code></pre>
+
+<p>进行必要的测试：</p>
+<pre><code>@Test
+public void addNum() {
+    try {
+        service.addNum(6, 100, 10, &quot;林平之&quot;);
+    }catch(ServiceException e) {
+        System.err.println(e.getClass().getName());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>67. 购物车-增加商品数量-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>在<code>BaseController</code>中处理<code>CartNotFoundException</code></p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/carts/add_num
+请求参数：Integer cid,Integer num,HttpSession session
+请求方式：POST
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>(c) 实现请求</strong></p>
+<pre><code>@RequestMapping(&quot;add_num&quot;)
+public JsonResult&lt;Void&gt; addNum(Integer cid,Integer num,HttpSession session){
+    Integer uid=getUidFromSession(session);
+    String username=getUsernameFromSession(session);
+
+    service.addNum(cid, num, uid, username);
+    return new JsonResult&lt;Void&gt;(SUCCESS);
+}
+</code></pre>
+
+<p>测试：<code>http://localhost:8080/carts/add_num?cid=10&amp;num=200</code></p>
+<h3>68. 购物车-增加商品数量-前端界面</h3>
+<h3>69. 购物车-减少商品数量</h3>
+<h3>70. 购物车-删除</h3>
+<h3>---------------</h3>
+<h3>列出所有2级商品类型的名称</h3>
+<p>id,  parent_id, name,
+1      0        图书
+2      1        电子书</p>
+<p>实现逻辑：当前这条记录的<code>parent_id</code>对应的记录的<code>parent_id</code>等于0</p>
+<p>查哪些列:t1.id,t1.parent<em>id,t1.name, t2.id,t2.parent</em>id,t2.name
+查哪张表: t<em>product<em>categor t1 join t</em>product</em>categor t2 
+连接条件：on t1.parent<em>id = t2.id
+筛选条件：where t2.parent</em>id=0</p>
+<pre><code>select
+    t1.id,t1.parent_id,t1.name, t2.id,t2.parent_id,t2.name
+from
+    t_product_category t1 join t_product_category t2
+on
+    t1.parent_id = t2.id
+where
+    t2.parent_id=0;
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
