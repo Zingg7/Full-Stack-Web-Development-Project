@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML文件用于配置哪个接口中抽象方法对应的SQL语句 -->
+<mapper namespace="cn.tedu.store.mapper.DistrictMapper">
+
+	<!-- 根据parent查子级地区信息 -->
+	<!-- List<District> findByParent(String parent) -->
+	<select id="findByParent" 
+	resultType="cn.tedu.store.entity.District">
+		SELECT
+			id, parent,
+			code, name
+		FROM
+			t_dict_district
+		WHERE
+			parent=#{parent}
+	</select>
+	
+		<!-- 根据code查询地区信息 -->
+	<!-- District findByCode(String code) -->
+	<select id="findByCode"
+	resultType="cn.tedu.store.entity.District">
+		SELECT
+			id, parent,
+			code, name
+		FROM
+			t_dict_district
+		WHERE
+			code=#{code}
+	</select>
+	
+	
+
+</mapper>
+
+
+
+
+
+

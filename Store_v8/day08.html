@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day08</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>38. 收货地址-设为默认-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>要修改一个地址数据的is_default属性的值，改为1：</p>
+<pre><code>update t_address set is_default=1, modified_user=?,modified_time=? where aid=?;   
+</code></pre>
+
+<p>应该将原来的默认收货地址数据设为非默认，如果要针对原来的默认地址进行修改，则需要额外进行一次查询，这里可以简化成将该用户所有的收货地址设为非默认。这里不会修改<code>modified_time</code>，避免对后续的查询造成影响:</p>
+<pre><code>update t_address set is_default=0 where uid=?;
+</code></pre>
+
+<p>在设为默认收货地址之前，应该对前台传来的<code>aid</code>进行验证：</p>
+<pre><code>select * from t_address where aid=?
+</code></pre>
+
+<p>这个查询查什么都可以，重点在于是否能够查到数据。</p>
+<p>在更新之前，还应该验证当前用户是否有操作该地址数据的权限：</p>
+<pre><code>select uid from t_address where aid=?
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>AddressMapper.java</code>接口中添加以下3个抽象方法：</p>
+<pre><code>Integer updateDefault(
+        @Param(&quot;aid&quot;) Integer aid,
+        @Param(&quot;username&quot;) String username,
+        @Param(&quot;modifiedTime&quot;) Date modifiedTime);
+
+Integer updateNonDefault(Integer uid);
+
+Address findByAid(Integer aid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>AddressMapper.xml</code>中配置对应的映射：</p>
+<pre><code>&lt;!-- 将一条收货地址设为默认收货地址 --&gt;
+&lt;!-- Integer updateDefault(
+        @Param(&quot;aid&quot;) Integer aid,
+        @Param(&quot;username&quot;) String username,
+        @Param(&quot;modifiedTime&quot;) Date modifiedTime) --&gt;
+&lt;update id=&quot;updateDefault&quot;&gt;
+    update 
+        t_address 
+    set 
+        is_default=1, 
+        modified_user=#{username},
+        modified_time=#{modifiedTime}
+    where 
+        aid=#{aid};
+&lt;/update&gt;
+
+&lt;!-- 将一个用户的所有收货地址设为非默认 --&gt;
+&lt;!-- Integer updateNonDefault(Integer uid) --&gt;
+&lt;update id=&quot;updateNonDefault&quot;&gt;
+    update 
+        t_address 
+    set 
+        is_default=0 
+    where 
+        uid=#{uid};
+&lt;/update&gt;
+
+&lt;!-- 根据aid查询一条收货地址数据 --&gt;
+&lt;!-- Address findByAid(Integer aid) --&gt;
+&lt;select id=&quot;findByAid&quot;
+    resultMap=&quot;AddressEntityMap&quot;&gt;
+    select 
+        * 
+    from 
+        t_address 
+    where 
+        aid=#{aid}
+&lt;/select&gt;
+</code></pre>
+
+<p>在<code>AddressMapperTests</code>中开发测试方法：</p>
+<pre><code>@Test
+public void updateNonDefault() {
+    Integer rows=mapper.updateNonDefault(10);
+    System.err.println(rows);
+}
+
+@Test
+public void updateDefault() {
+    Integer row=mapper.updateDefault(14, &quot;张三丰&quot;, new Date());
+    System.err.println(row);
+}
+
+@Test
+public void findByAid() {
+    Address addr=mapper.findByAid(14);
+    System.err.println(addr);
+}
+</code></pre>
+
+<h3>39. 收货地址-设为默认-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>更新操作，可能抛出<code>UpdateException</code>。</p>
+<p>使用aid查询地址数据是否存在，可能抛出<code>AddressNotFoundException</code>。</p>
+<p>查询到的地址的uid和当前操作用户的uid不一致，可能抛出<code>AccessDeniedException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>IAddressService</code>接口中定义以下抽象方法：</p>
+<pre><code>void setDefault(Integer aid,Integer uid,String username)throws AddressNotFoundException, AccessDeniedException, UpdateException;
+</code></pre>
+
+<p><strong>(c) 实现接口</strong></p>
+<p>在<code>AddressServiceImpl</code>中添加持久层<code>AddressMapper</code>中声明的3个抽象方法的私有实现：</p>
+<pre><code>/**
+ * 将一条收货地址设为默认收货地址
+ * @param aid 收货地址id
+ * @param uesrname 最后修改人姓名
+ * @param modifiedTime 最后修改时间
+ * @return 受影响的行数
+ */
+private void updateDefault(Integer aid,
+        String username, Date modifiedTime) throws UpdateException {
+    Integer row=mapper.updateDefault(aid, username, modifiedTime);
+    if(row!=1) {
+        throw new UpdateException(&quot;设置默认收货地址异常！请联系管理员&quot;);
+    }
+
+}
+
+/**
+ * 将一个用户的所有收货地址设为非默认
+ * @param uid 用户id
+ * @return 受影响的行数
+ */
+private void updateNonDefault(Integer uid) throws UpdateException{
+    Integer rows=mapper.updateNonDefault(uid);
+    if(rows&lt;1) {
+        throw new UpdateException(&quot;设置默认收货地址异常！请联系管理员&quot;);
+    }
+}
+
+/**
+ * 根据aid查询一条收货地址数据
+ * @param aid 收货地址id
+ * @return 收货地址数据 或 null
+ */
+private Address findByAid(Integer aid) {
+    return mapper.findByAid(aid);
+}
+</code></pre>
+
+<p>在<code>AddressServiceImpl</code>中实现<code>IAddressService</code>声明的抽象方法：</p>
+<pre><code>public void setDefault(Integer aid,Integer uid,String username)throws AddressNotFoundException, AccessDeniedException, UpdateException{
+    // 使用aid查地址数据
+    // 判断结果是否为null
+    // 是：AddressNotFoundException
+
+    // 查询结果中的uid和方法参数的uid是否不一致
+    // 是：AccessDeniedException
+
+    // 将该用户的所有收货地址设为非默认
+
+    // 将该用户指定的收货地址设为默认
+}
+</code></pre>
+
+<p>代码实现为：</p>
+<pre><code>@Override
+@Transactional
+public void setDefault(Integer aid, Integer uid, String username)
+        throws AddressNotFoundException, AccessDeniedException, UpdateException {
+    // 使用aid查地址数据
+    Address address=findByAid(aid);
+    // 判断结果是否为null
+    if(address==null) {
+        // 是：AddressNotFoundException
+        throw new AddressNotFoundException(&quot;设置默认收货地址异常！地址数据不存在&quot;);
+    }
+
+    // 查询结果中的uid和方法参数的uid是否不一致
+    if(!address.getUid().equals(uid)) {
+        // 是：AccessDeniedException
+        throw new AccessDeniedException(&quot;设置默认收货地址异常！访问权限不足&quot;);
+    }
+
+    // 将该用户的所有收货地址设为非默认
+    updateNonDefault(uid);
+    // 将该用户指定的收货地址设为默认
+    updateDefault(aid, username, new Date());
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<h3>40. 收货地址-设为默认-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>在<code>BaseController</code>添加2种新异常的处理逻辑：</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/addresses/set_default
+请求参数：Integer aid, HttpSession session
+请求方式：Post
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p>当前比较流行的一种设计风格：RESTful</p>
+<pre><code>请求url的设计：/资源/id/命令
+使用这种设计有个前提：使用的框架要支持RESTful
+
+第一步：在请求路径中使用{xxx}作为参数的占位符
+第二步：在方法中获取参数时，前面添加@PathVariable(&quot;{xxx}&quot;)
+
+这种url的设计风格适合参数少且固定的场景
+
+请求路径：/addresses/{aid}/set_default
+请求参数：@PathVariable(&quot;{aid}&quot;) Integer aid, HttpSession session
+请求方式：Post
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>(c) 实现请求</strong></p>
+<pre><code>@RequestMapping(&quot;{aid}/set_default&quot;)
+public JsonResult&lt;Void&gt; setDefault(
+    @PathVariable(&quot;aid&quot;) Integer aid, HttpSession session){
+    String username=getUsernameFromSession(session);
+    Integer uid=getUidFromSession(session);
+    service.setDefault(aid,uid,username);
+    return new JsonResult&lt;&gt;(SUCCESS);
+}
+</code></pre>
+
+<p>在浏览器地址栏进行测试：<code>localhost:8080/addresses/14/set_default</code></p>
+<h3>41. 收货地址-设为默认-前端界面</h3>
+<h3>42. 收货地址-删除-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>删除一条数据，大概的语句：</p>
+<pre><code>delete from t_address where aid=?
+</code></pre>
+
+<p>删除之前，应该验证aid对应的数据是否存在，然后还应该验证当前用户是否有操作该数据的权限，在之前已经实现该功能。</p>
+<p>如果用户删除的是默认收货地址，且删除之后，该用户已经没有任何收货地址了，则不需要进行额外的操作。查询该用户当前有几条收货地址，已经通过<code>countByUid()</code>实现过。</p>
+<p>如果用户删除的是默认收货地址，且删除之后，该用户还有其它收货地址，则应该选择“最后更新”的那一条收货地址，作为用户的默认收货地址。需要查找该用户“最后更新”的那条收货地址记录：</p>
+<pre><code>select * from t_address where uid=? order by modified_time desc limit 0,1;
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>AddressMapper.java</code>中添加2个抽象方法：</p>
+<pre><code>Integer deleteByAid(Integer aid);
+
+Address findLastModified(Integer uid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<pre><code>&lt;!-- 根据aid删除一条收货地址记录 --&gt;
+&lt;!-- Integer deleteByAid(Integer aid) --&gt;
+&lt;delete id=&quot;deleteByAid&quot;&gt;
+    delete from 
+        t_address 
+    where aid=#{aid}
+&lt;/delete&gt;
+
+&lt;!-- 查询一个用户的最后修改的收货地址 --&gt;
+&lt;!-- Address findLastModified(Integer uid) --&gt;
+&lt;select id=&quot;findLastModified&quot;
+    resultMap=&quot;AddressEntityMap&quot;&gt;
+    select 
+        * 
+    from 
+        t_address 
+    where 
+        uid=#{uid} 
+    order by 
+        modified_time desc 
+    limit 0,1;
+&lt;/select&gt;
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void deteleByAid() {
+    Integer row=mapper.deleteByAid(6);
+    System.err.println(row);
+}
+
+@Test
+public void findLastModified() {
+    Address address=mapper.findLastModified(10);
+    System.err.println(address);
+}
+</code></pre>
+
+<h3>43. 收货地址-删除-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>删除时：DeleteException</p>
+<p>删除前：AddressNotFoundException, AccessDeniedException</p>
+<p>删除后，可能将一条记录设为默认收货地址：UpdateException</p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>IAddressService</code>接口中添加以下抽象方法：</p>
+<pre><code>void removeAddress(Integer aid,
+    Integer uid, String username) throws AddressNotFoundException, AccessDeniedException, DeleteException,UpdateException;
+</code></pre>
+
+<p><strong>(c) 实现接口</strong></p>
+<p>在<code>AddressServiceImpl</code>中提供持久层2个抽象方法的私有实现：</p>
+<pre><code>/**
+ * 根据aid删除一条收货地址记录
+ * @param aid 收货地址id
+ * @return 受影响的行数
+ */
+private void deleteByAid(Integer aid) throws DeleteException {
+    Integer row=mapper.deleteByAid(aid);
+    if(row!=1) {
+        throw new DeleteException(&quot;删除收货地址异常！请联系管理员&quot;);
+    }
+};
+
+/**
+ * 查询一个用户的最后修改的收货地址
+ * @param uid 用户的id
+ * @return 最后修改的收货地址
+ */
+private Address findLastModified(Integer uid) {
+    return mapper.findLastModified(uid);
+};
+</code></pre>
+
+<p>在<code>AddressServiceImpl</code>中实现接口中定义的抽象方法：</p>
+<pre><code>@Transactional
+public void removeAddress(Integer aid,
+    Integer uid, String username) throws AddressNotFoundException, AccessDeniedException, DeleteException,UpdateException{
+
+    // 使用aid查地址数据
+    // 判断结果是否为null
+    // 是：AddressNotFoundException
+
+    // 查询结果中的uid和方法参数的uid是否不一致
+    // 是：AccessDeniedException
+
+    // 删除aid对应的地址数据
+
+    // 判断刚才的查询结果中的isDefault是否不为1
+    // return;
+
+    // 查看当前用户剩余的收货地址条数
+    // 判断条数是否为0
+    // 是：return;
+
+    // 查询该用户的最后修改的收货地址
+    // 将该条记录设为该用户的默认收货地址
+}
+</code></pre>
+
+<p>对应的代码实现：</p>
+<pre><code>@Override
+@Transactional
+public void removeAddress(Integer aid, Integer uid, String username)
+        throws AddressNotFoundException, AccessDeniedException, DeleteException, UpdateException {
+    // 使用aid查地址数据
+    Address result=findByAid(aid);
+    // 判断结果是否为null
+    if(result==null) {
+        // 是：AddressNotFoundException
+        throw new AddressNotFoundException(&quot;删除收货地址异常！地址数据不存在&quot;);
+    }
+
+    // 查询结果中的uid和方法参数的uid是否不一致
+    if(!result.getUid().equals(uid)) {
+        // 是：AccessDeniedException
+        throw new AccessDeniedException(&quot;删除收货地址异常！访问权限不足&quot;);
+    }
+
+    // 删除aid对应的地址数据
+    deleteByAid(aid);
+
+    // 判断刚才的查询结果中的isDefault是否不为1
+    if(result.getIsDefault()!=1) {
+        return;
+    }
+
+    // 查看当前用户剩余的收货地址条数
+    Integer count = countByUid(uid);
+    // 判断条数是否为0
+    if(count==0) {
+        return;
+    }
+
+    // 查询该用户的最后修改的收货地址
+    Address lastModifiedAddress=findLastModified(uid);
+    // 将该条记录设为该用户的默认收货地址
+    updateDefault(lastModifiedAddress.getAid(), username, new Date());
+}
+</code></pre>
+
+<p>开发对应的测试用例：</p>
+<pre><code>@Test
+public void removeAddress() {
+    try {
+        service.removeAddress(15, 10, &quot;张翠山&quot;);
+    }catch(ServiceException e) {
+        System.err.println(e.getClass().getName());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>44. 收货地址-删除-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>处理<code>DeleteException</code></p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>/资源/id/命令
+
+请求路径：/addresses/{aid}/delete
+请求参数：@PathVariable(&quot;aid&quot;) Integer aid, HttpSession session
+请求方式：POST
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>(c) 实现请求</strong></p>
+<pre><code>@RequestMapping(&quot;{aid}/delete&quot;)
+public JsonResult&lt;Void&gt; removeAddress(@PathVariable(&quot;aid&quot;) Integer aid, HttpSession session){
+    Integer uid=getUidFromSession(session);
+    String username=getUsernameFromSession(session);
+    return new JsonResult&lt;&gt;(SUCCESS);
+}
+</code></pre>
+
+<p>完成后，通过<code>localhost:8080/addresses/15/delete</code>进行测试，测试通过后，将控制器层的<code>RequestMapping</code>修改为<code>PostMapping</code></p>
+<h3>45. 收货地址-删除-前端界面</h3>
+<h3>46. 商品-分析</h3>
+<p>导入商品和商品种类表及数据：</p>
+<p>首先应该选择<code>tedu_store</code>库，在使用<code>source 文件路径</code>导入文件</p>
+<p>对<code>t_product</code>和<code>t_product_category</code>表中的字段加以熟悉</p>
+<p><code>t_product_category</code>表在后续的用例中用不上，所以仅需要开发<code>t_product</code>表对应的实体类</p>
+<h3>-----------------------------</h3>
+<h3>基于spring-jdbc的事务</h3>
+<p>事务的概念：事务指逻辑上对数据库的一组操作，组成这组操作的每一项操作，要么都成功，要么都不成功。主流的数据库，都提供了对事务的支持。</p>
+<p>什么时候用事务：在一组数据库操作中，存在2个及以上的更新操作(增、删、改)时，应该使用事务</p>
+<p>如何实现事务？</p>
+<p>命令式事务：</p>
+<pre><code>start transaction;
+commit;
+rollback;
+</code></pre>
+
+<p>编程式事务：</p>
+<pre><code>使用Java JDBC的api:
+conn.setAutoCommit(false);
+conn.commit();
+conn.rollback();
+</code></pre>
+
+<p>声明式事务：</p>
+<pre><code>使用Spring提供的注解： @Transactional
+</code></pre>
+
+<p>@Transactional的大致实现原理：</p>
+<pre><code>// 启动事务
+try{
+    调用添加了@Transactional的业务层方法
+    提交事务
+}catch(RuntimeException e){
+    回滚事务
+}
+</code></pre>
+
+<p>@Transactional默认仅对<code>RuntimeException</code>及其子类异常回滚，因此我们在设计异常时，要求<code>ServiceException</code>继承<code>RuntimeException</code>，以保证事务正常回滚。</p>
+<p>可以通过显式声明<code>rollbackfor</code>属性，来配置该注解对<code>Exception</code>回滚：<code>@Transactional(rollbackFor=Exception.class)</code></p>
+<p><code>@Transactional</code>也可以添加到类上，代表该类中所有的方法都是在事务下运行的，但是不推荐这么做</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
