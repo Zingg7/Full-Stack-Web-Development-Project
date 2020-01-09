@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day06</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>25. 收货地址功能分析</h3>
+<p>与“收货地址”数据相关的功能有：新增，修改，删除，设为默认，地址列表</p>
+<p>以上功能的开发顺序，&quot;增 查 删 改&quot;，新增 &gt; 地址列表 &gt;设为默认 &gt; 删除 &gt; 修改 </p>
+<h3>26. 创建数据表</h3>
+<p>表名和编码规则 &gt; 主键字段 &gt; 注释 &gt; 字段名 &gt; 类型 &gt; 约束</p>
+<pre><code>CREATE TABLE t_address(
+    aid INT AUTO_INCREMENT COMMENT '地址id',
+    uid INT COMMENT '用户id',
+    name VARCHAR(50) COMMENT '收货人姓名',
+    province_name VARCHAR(20) COMMENT '省名称',
+    province_code INT COMMENT '省代码',
+    city_name VARCHAR(20) COMMENT '市名称',
+    city_code INT COMMENT '市代码',
+    area_name VARCHAR(50) COMMENT '区名称',
+    area_code INT COMMENT '区代码',
+    zip INT COMMENT '邮政编码',
+    address VARCHAR(50) COMMENT '详细地址',
+    phone VARCHAR(20) COMMENT '手机号',
+    tel VARCHAR(20) COMMENT '固话',
+    tag VARCHAR(20) COMMENT '地址类型',
+    is_default INT COMMENT '是否为默认地址,0-不是，1-是',
+    created_user VARCHAR(50) COMMENT '创建人',
+    created_time DATETIME COMMENT '创建时间',
+    modified_user VARCHAR(50) COMMENT '最后修改人',
+    modified_time DATETIME COMMENT '最后修改时间',
+    PRIMARY KEY (aid)
+)DEFAULT CHARSET=utf8;
+</code></pre>
+
+<h3>27. 创建实体类</h3>
+<p>创建<code>cn.tedu.store.entity.Address</code>实体类，封装收货地址数据，继承<code>cn.tedu.store.entity.BaseEntity</code></p>
+<pre><code>public class Address{
+    private Integer aid;
+    private Integer uid;
+    private String name;
+    private String provinceName;
+    private Integer provinceCode;
+    private String cityName;
+    private Integer cityCode;
+    private String areaName;
+    private Integer areaCode;
+    private Integer zip;
+    private String address;
+    private String phone;
+    private String tel;
+    private String tag;
+    private Integer isDefault;
+
+    // GET/SET/基于aid生成hashCode和equals方法/toString方法
+}
+</code></pre>
+
+<h3>28. 收货地址-新增-持久层</h3>
+<p><strong>(a) 规划SQL语句</strong></p>
+<p>“新增收货地址”属于插入操作，大概的SQL语句是：</p>
+<pre><code>insert into t_address(除aid以外的所有字段) values(与之匹配的所有属性);
+</code></pre>
+
+<p>“默认地址”的设置逻辑是：如果当前用户没有任何收货地址，添加的第一条收货地址为“默认收货地址”，如果用户已经存在其他收货地址，则添加的新地址不会作为“默认收货地址”，因此，在插入之前，应该查询当前用户已有几条收货地址：</p>
+<pre><code>select count(*) from t_address where uid=?
+</code></pre>
+
+<p>每个用户的收货地址条数有一个上限，在插入新地址之前，应该检查该用户已有的收货地址是否达到上限，该功能也可以通过上述语句实现。</p>
+<p>添加地址时是否需要验证用户uid是否有效？即使uid失效，添加一条无效的地址数据，对业务没有实质影响，因此可以考虑不验证。</p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.mapper.AddressMapper</code>接口，作为收货地址功能的持久层接口，并添加以下2个抽象方法：</p>
+<pre><code>Integer saveAddress(Address address);
+
+Integer countByUid(Integer uid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>src/main/resources/mappers</code>中创建<code>AddressMapper.xml</code>，从之前的<code>UserMapper.xml</code>中复制所有内容进新文件，删除所有子节点，修改根节点中的<code>namespace=&quot;cn.tedu.store.mapper.AddressMapper&quot;</code>，之后添加以上2个抽象方法的映射：</p>
+<pre><code>&lt;!-- 新增收货地址 --&gt;
+&lt;!-- Integer saveAddress(Address address) --&gt;
+&lt;insert id=&quot;saveAddress&quot;
+    useGeneratedKeys=&quot;true&quot;
+    keyProperty=&quot;aid&quot;&gt;
+    INSERT INTO
+        t_address(
+        uid, name,
+        province_name, province_code,
+        city_name, city_code,
+        area_name, area_code,
+        zip, address,
+        phone, tel,
+        tag, is_default,
+        created_user, created_time,
+        modified_user, modified_time
+    )VALUES(
+        #{uid}, #{name},
+        #{provinceName}, #{provinceCode},
+        #{cityName}, #{cityCode},
+        #{areaName}, #{areaCode},
+        #{zip}, #{address},
+        #{phone}, #{tel},
+        #{tag}, #{isDefault},
+        #{createdUser}, #{createdTime},
+        #{modifiedUser}, #{modifiedTime}
+    )
+&lt;/insert&gt;
+
+&lt;!-- 查询用户收货地址条数 --&gt;
+&lt;!-- Integer countByUid(Integer uid) --&gt;
+&lt;select id=&quot;countByUid&quot;
+    resultType=&quot;java.lang.Integer&quot;&gt;
+    SELECT
+        count(*)
+    FROM
+        t_address
+    WHERE
+        uid=#{uid}
+&lt;/select&gt;
+</code></pre>
+
+<p>完成之后，在<code>src/test/java</code>下开发<code>cn.tedu.store.mapper.AddressMapperTests</code>类，并添加上述2个抽象方法的测试方法：</p>
+<h3>29. 收货地址-新增-业务层</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>插入操作，有<code>InsertException</code>。</p>
+<p>一个用户的收货地址数量超过上限，对应的异常<code>cn.tedu.store.service.ex.AddressCountLimitException</code>，继承<code>ServiceException</code></p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>创建<code>cn.tedu.store.service.IAddressService</code>接口，在其中添加抽象方法：</p>
+<pre><code>void createAddress(Integer uid,String username, Address address)throws AddressCountLimitException, InsertException;
+</code></pre>
+
+<p><strong>(c) 实现接口</strong></p>
+<p>创建<code>cn.tedu.store.service.impl.AddressServiceImpl</code>类，实现<code>IAddressService</code>接口，并实现其中的抽象方法：</p>
+<pre><code>@Service
+public class AddressServiceImpl{
+
+    @Autowired
+    AddressMapper mapper;
+
+    public void createAddress(Integer uid,String username, Address address)throws AddressCountLimitException, InsertException{
+        // 根据uid查询收货地址条数
+        // 条数是否达到上限 3
+        // 是：AddressCountLimitException
+
+        // 补全uid
+        // 补全isDefault，根据上面查询到的收货地址条数进行判断
+        // TODO 补全省市区数据：补充省市区名称
+        // 创建当前时间对象
+        // 补全4项日志数据
+
+        // 执行添加操作
+        saveAddress(address);
+    }
+
+}
+</code></pre>
+
+<p>代码实现如下：</p>
+<pre><code>@Override
+public void createAddress(Integer uid, String username, Address address)
+        throws AddressCountLimitException, InsertException {
+    // 根据uid查询收货地址条数
+    Integer count=countByUid(uid);
+    // 条数是否达到上限 3
+    if(count &gt;= ADDRESS_MAX_COUNT) {
+        // 是：AddressCountLimitException
+        throw new AddressCountLimitException(&quot;新增收货地址异常！最大收货地址条数为&quot;+ADDRESS_MAX_COUNT);
+    }
+
+    // 补全uid
+    address.setUid(uid);
+    // 补全isDefault，根据上面查询到的收货地址条数进行判断
+    int isDefault=count==0 ? 1 : 0;
+    address.setIsDefault(isDefault);
+    // TODO 补全省市区数据：补充省市区名称
+    // 创建当前时间对象
+    Date now =new Date();
+    // 补全4项日志数据
+    address.setCreatedUser(username);
+    address.setCreatedTime(now);
+    address.setModifiedUser(username);
+    address.setModifiedTime(now);
+    // 执行添加操作
+    saveAddress(address);
+}
+</code></pre>
+
+<p>为了减少代码的重复性，提高可维护性，可以将持久层的2个抽象方法复制到业务层实现类中，提供方法的私有实现：</p>
+<pre><code>private Integer countByUid(Integer uid){
+    // 对参数的合理性进行判断  
+    if(uid==null || uid&lt;1){
+        throw new IllegalArgumentException();
+    }
+    return mapper.countByUid(uid);
+}
+
+private void saveAddress(Address address){
+    Integer row=mapper.saveAddress(address);
+    if(row!=1){
+        throw new InsertException(&quot;添加收货地址异常！请联系管理员&quot;);
+    }
+}
+</code></pre>
+
+<p>完成后，在<code>src/test/java</code>中开发<code>cn.tedu.store.serivce.AddressServiceTests</code>类，并开发<code>createAddress()</code>的测试方法：</p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AddressServiceTests {
+
+    @Autowired
+    IAddressService service;
+
+    @Test
+    public void createAddress() {
+        try {
+            Address add=new Address();
+            add.setName(&quot;小张同学&quot;);
+            add.setAddress(&quot;程序员之家&quot;);
+            service.createAddress(6, &quot;管理员&quot;, add);
+        }catch(ServiceException e) {
+            System.err.println(e.getClass().getName());
+            System.err.println(e.getMessage());
+        }
+    }
+}
+</code></pre>
+
+<h3>30. 收货地址-新增-控制器层</h3>
+<p><strong>(a) 统一异常处理</strong></p>
+<p>在<code>BaseController</code>中添加对<code>AddressCountLimitException</code>的处理逻辑</p>
+<p><strong>(b) 设计请求</strong></p>
+<p>设计“新增收货地址”的请求方式：</p>
+<pre><code>请求路径：/addresses/create_address
+请求参数：Address address,HttpSession session
+请求方式：POST
+响应数据：JsonResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>(c) 实现请求</strong></p>
+<p>开发<code>cn.tedu.store.controller.AddressController</code>，继承<code>BaseController</code>：</p>
+<pre><code>@RestController
+@RequestMapping(&quot;addresses&quot;)
+public class AddressController extends BaseController{
+
+    @Autowired
+    IAddressService service;
+
+    @RequestMapping(&quot;create_address&quot;)
+    public JsonResult&lt;Void&gt; createAddress(Address address,HttpSession session){
+        // 获取用户的uid
+        // 获取用户的username
+        // 执行添加操作
+        // 返回JsonResult对象
+    }
+}
+</code></pre>
+
+<p>实现如下：</p>
+<pre><code>@RequestMapping(&quot;create_address&quot;)
+public JsonResult&lt;Void&gt; createAddress(Address address,HttpSession session){
+    // 获取用户的uid
+    Integer uid=getUidFromSession(session);
+    // 获取用户的username
+    String username=getUsernameFromSession(session);
+    // 执行添加操作
+    service.createAddress(uid, username, address);
+    // 返回JsonResult对象
+    return new JsonResult&lt;&gt;(SUCCESS);
+}
+</code></pre>
+
+<p>在浏览器使用<code>http://localhost:8080/addresses/create_address?name=Tom</code></p>
+<p>测试通过之后，将<code>@RequstMapping</code>改为<code>@PostMapping</code>，再将地址条数的上限修改为15</p>
+<h3>31. 收货地址-新增-前端界面</h3>
+<h3>32. 收货地址-页面中显示省市区列表</h3>
+<p>导入省市区数据到数据库中：
+在mysql终端下，先使用<code>tedu_store</code>库，再使用以下命令：</p>
+<pre><code>source sql文件在硬盘的路径;(可以直接将文件拖拽进终端，linux系统需要删除自动添加的首位单引号)
+</code></pre>
+
+<p>查看表结构：</p>
+<pre><code>desc t_dict_district;
+</code></pre>
+
+<p>查看10条数据：</p>
+<pre><code>select * from t_dict_district limit 10;
+</code></pre>
+
+<p>查看所有的省级数据：</p>
+<pre><code>select * from t_dict_district where parent=86;
+</code></pre>
+
+<p>创建<code>cn.tedu.store.entity.District</code>，添加必要的属性：</p>
+<pre><code>public class District{
+    private Integer id;
+    private String parent;
+    private String code;
+    private String name;
+
+    //GET/SET/toString()
+}
+</code></pre>
+
+<p>接下来，基于<code>t_dict_district</code>开发省市区列表的查询业务，要求是根据父级编码，查询所有子级内容。</p>
+<p>持久层-规划SQL语句</p>
+<pre><code>select * from t_dict_district where parent=?
+</code></pre>
+
+<p>持久层-接口和抽象方法：创建<code>cn.tedu.store.mapper.DistrictMapper</code>，封装持久层操作的抽象方法：</p>
+<pre><code>List&lt;District&gt; findByParent(String parent);
+</code></pre>
+
+<p>持久层-配置映射：在<code>src/main/resources/mappers</code>中创建<code>DistrictMapper.xml</code>，复制文件的根节点信息，修改<code>namespace</code>属性的值，添加上述抽象方法的映射：</p>
+<pre><code>&lt;!-- 根据parent查子级地区信息 --&gt;
+&lt;!-- District findByParent(String parent) --&gt;
+&lt;select id=&quot;findByParent&quot; 
+resultType=&quot;cn.tedu.store.entity.District&quot;&gt;
+    SELECT
+        id, parent,
+        code, name
+    FROM
+        t_dict_district
+    WHERE
+        parent=#{parent}
+&lt;/select&gt;
+</code></pre>
+
+<p>在<code>src/test/java</code>中开发<code>cn.tedu.store.mapper.DistrictMapperTests</code>类，并添加以上抽象方法的测试方法：</p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DistrictMapperTests{
+
+    @Autowired
+    DistrictMapper mapper;
+
+    @Test
+    public void findByParent(){
+        String parent=&quot;86&quot;;
+        List&lt;District&gt; list=mapper.findByParent(parent);
+        for(District dist:list){
+            System.err.println(dist);
+        }
+    }
+}
+</code></pre>
+
+<p>业务层-规划异常：</p>
+<p>业务层-接口和抽象方法：</p>
+<p>创建<code>cn.tedu.store.service.IDistrictService</code>接口，并添加抽象方法：</p>
+<pre><code>List&lt;District&gt; listByParent(String parent);
+</code></pre>
+
+<p>业务层-实现抽象方法：</p>
+<p>创建<code>cn.tedu.store.service.impl.DistrictServiceImpl</code>接口，并实现上述抽象方法：</p>
+<pre><code>@Service
+public class DistrictServiceImpl implements IDistrictService{
+
+    public List&lt;District&gt; listByParent(String parent){
+
+    }
+
+}
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

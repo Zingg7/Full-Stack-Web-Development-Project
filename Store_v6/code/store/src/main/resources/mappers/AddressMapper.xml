@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML文件用于配置哪个接口中抽象方法对应的SQL语句 -->
+<mapper namespace="cn.tedu.store.mapper.AddressMapper">
+
+	<!-- 新增收货地址 -->
+	<!-- Integer saveAddress(Address address) -->
+	<insert id="saveAddress"
+		useGeneratedKeys="true"
+		keyProperty="aid">
+		INSERT INTO
+			t_address(
+			uid, name,
+			province_name, province_code,
+			city_name, city_code,
+			area_name, area_code,
+			zip, address,
+			phone, tel,
+			tag, is_default,
+			created_user, created_time,
+			modified_user, modified_time
+		)VALUES(
+			#{uid}, #{name},
+			#{provinceName}, #{provinceCode},
+			#{cityName}, #{cityCode},
+			#{areaName}, #{areaCode},
+			#{zip}, #{address},
+			#{phone}, #{tel},
+			#{tag}, #{isDefault},
+			#{createdUser}, #{createdTime},
+			#{modifiedUser}, #{modifiedTime}
+		)
+	</insert>
+
+	<!-- 查询用户收货地址条数 -->
+	<!-- Integer countByUid(Integer uid) -->
+	<select id="countByUid"
+		resultType="java.lang.Integer">
+		SELECT
+			count(*)
+		FROM
+			t_address
+		WHERE
+			uid=#{uid}
+	</select>
+
+</mapper>
+
+
+
+
+
+
