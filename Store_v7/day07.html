@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day07</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>32. 收货地址-页面中显示省市区列表</h3>
+<p>导入省市区数据到数据库中：
+在mysql终端下，先使用<code>tedu_store</code>库，再使用以下命令：</p>
+<pre><code>source sql文件在硬盘的路径;(可以直接将文件拖拽进终端，linux系统需要删除自动添加的首位单引号)
+</code></pre>
+
+<p>查看表结构：</p>
+<pre><code>desc t_dict_district;
+</code></pre>
+
+<p>查看10条数据：</p>
+<pre><code>select * from t_dict_district limit 10;
+</code></pre>
+
+<p>查看所有的省级数据：</p>
+<pre><code>select * from t_dict_district where parent=86;
+</code></pre>
+
+<p>创建<code>cn.tedu.store.entity.District</code>，添加必要的属性：</p>
+<pre><code>public class District{
+    private Integer id;
+    private String parent;
+    private String code;
+    private String name;
+
+    //GET/SET/toString()
+}
+</code></pre>
+
+<p>接下来，基于<code>t_dict_district</code>开发省市区列表的查询业务，要求是根据父级编码，查询所有子级内容。</p>
+<p>持久层-规划SQL语句</p>
+<pre><code>select * from t_dict_district where parent=?
+</code></pre>
+
+<p>持久层-接口和抽象方法：创建<code>cn.tedu.store.mapper.DistrictMapper</code>，封装持久层操作的抽象方法：</p>
+<pre><code>List&lt;District&gt; findByParent(String parent);
+</code></pre>
+
+<p>持久层-配置映射：在<code>src/main/resources/mappers</code>中创建<code>DistrictMapper.xml</code>，复制文件的根节点信息，修改<code>namespace</code>属性的值，添加上述抽象方法的映射：</p>
+<pre><code>&lt;!-- 根据parent查子级地区信息 --&gt;
+&lt;!-- District findByParent(String parent) --&gt;
+&lt;select id=&quot;findByParent&quot; 
+resultType=&quot;cn.tedu.store.entity.District&quot;&gt;
+    SELECT
+        id, parent,
+        code, name
+    FROM
+        t_dict_district
+    WHERE
+        parent=#{parent}
+&lt;/select&gt;
+</code></pre>
+
+<p>在<code>src/test/java</code>中开发<code>cn.tedu.store.mapper.DistrictMapperTests</code>类，并添加以上抽象方法的测试方法：</p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DistrictMapperTests{
+
+    @Autowired
+    DistrictMapper mapper;
+
+    @Test
+    public void findByParent(){
+        String parent=&quot;86&quot;;
+        List&lt;District&gt; list=mapper.findByParent(parent);
+        for(District dist:list){
+            System.err.println(dist);
+        }
+    }
+}
+</code></pre>
+
+<p>业务层-规划异常：</p>
+<p>业务层-接口和抽象方法：</p>
+<p>创建<code>cn.tedu.store.service.IDistrictService</code>接口，并添加抽象方法：</p>
+<pre><code>List&lt;District&gt; listByParent(String parent);
+</code></pre>
+
+<p>业务层-实现抽象方法：</p>
+<p>创建<code>cn.tedu.store.service.impl.DistrictServiceImpl</code>接口，并实现上述抽象方法：</p>
+<pre><code>@Service
+public class DistrictServiceImpl implements IDistrictService{
+
+    @Autowired
+    DistrictMapper mapper;
+
+    public List&lt;District&gt; listByParent(String parent){
+        return findByParent(parent);
+    }
+
+    private List&lt;District&gt; findByParent(String parent){
+        return mapper.findByParent(parent);
+    }
+}
+</code></pre>
+
+<p>控制器层-设计请求：</p>
+<pre><code>请求路径：/districts/
+请求参数：String parent
+请求方式：Get
+响应数据：JsonResult&lt;List&lt;District&gt;&gt;
+是否拦截：否，在白名单添加请求路径
+</code></pre>
+
+<p>控制器层-实现请求：</p>
+<p>开发<code>cn.tedu.store.controller.DistrictController</code>类，接收用户请求：</p>
+<pre><code>@RestController
+@RequestMapping(&quot;districts&quot;)
+public class DistrictController extends BaseController{
+
+    @Autowired
+    IDistrictService service;
+
+    @GetMapping(&quot;/&quot;)
+    public JsonResult&lt;List&lt;District&gt;&gt; listByParent(String parent){
+        List&lt;District&gt; list = service.listByParent(parent);
+        return new JsonResult&lt;List&lt;District&gt;&gt;(SUCCESS,list);
+    }
+}
+</code></pre>
+
+<p>在<code>cn.tedu.store.confit.InterceptorConfigurer</code>类中添加白名单配置<code>patterns.add(&quot;/districts/**&quot;);</code></p>
+<p>完成后，在浏览器地址栏通过<code>http://localhost:8080/districts/?parent=86</code>进行测试</p>
+<p>前端页面-在所有的下拉列表中添加一个默认项：
+实现思路：通过jquery的<code>append()</code>方法，将一个<code>&lt;option value='0'&gt;---- 请选择器 ----&lt;/option&gt;</code>拼接到<code>&lt;select&gt;</code>的内部。注意，应该先为每个<code>&lt;select&gt;</code>添加对应的id，分别是<code>province,city,area</code>。</p>
+<p>前端页面-页面就绪后自动添加省级列表：
+页面就绪后，自动向服务器发送一个AJAX请求，请求省级数据列表，遍历收到的数据，每一条数据生成一个<code>&lt;option&gt;</code>，添加到<code>&lt;select id=&quot;province&quot;&gt;</code>组件内部，以上逻辑可以单独封装成一个方法<code>function appendList()</code>：</p>
+<pre><code>// 页面就绪事件
+$(function(){
+    var defaultOption=
+        &quot;&lt;option value='0'&gt;---- 请选择 ----&lt;/option&gt;&quot;;
+
+    // 为3个&lt;select&gt;添加默认选项
+    $(&quot;#province&quot;).append(defaultOption);
+    $(&quot;#city&quot;).append(defaultOption);
+    $(&quot;#area&quot;).append(defaultOption);
+
+    // 自动生成省级列表
+    appendList(86,&quot;province&quot;);
+});
+
+// parent是父级编号，sid是select标签的id属性的值
+function appendList(parent,sid){
+    // 发送ajax请求
+    $.ajax({
+        &quot;url&quot;:&quot;/districts/&quot;,
+        &quot;data&quot;:&quot;parent=&quot;+parent,
+        &quot;type&quot;:&quot;get&quot;,
+        &quot;dataType&quot;:&quot;json&quot;,
+        &quot;success&quot;:function(json) {
+            // 获取列表的数组
+            var list = json.data;
+            // 遍历数组
+            for(var i=0;i&lt;list.length;i++){
+                // 每一条记录生成一个option
+                var option=&quot;&lt;option value='&quot;+
+                  list[i].code+&quot;'&gt;&quot;+list[i].name+&quot;&lt;/option&gt;&quot;;   
+                // 将option添加到select内部
+                $(&quot;#&quot;+sid).append(option);
+            }
+        }
+    });
+}
+</code></pre>
+
+<p>前端页面-省级列表改变时，自动添加市级列表：
+为省级<code>&lt;select&gt;</code>添加一个<code>onchange</code>事件，当省级内容改变时，自动发送一个AJAX请求，获取当前选中的省对应的市级目录，并显示在市级<code>&lt;select&gt;</code>中。</p>
+<h3>33. 收货地址-增加-业务层(补):</h3>
+<p>在业务层方法中，需要补充省市区信息的名称，<code>address</code>对象中已经封装了省市区对应的编号，现在需要根据该地区的编号(code)查询对应的名称(name)。</p>
+<p>应该在<code>cn.tedu.store.mapper.DistrictMapper</code>中添加抽象方法：</p>
+<pre><code>District findByCode(String code);
+</code></pre>
+
+<p>应该在<code>src/main/resources/mappers</code>中的<code>DistrictMapper.xml</code>中添加以上抽象方法的映射：</p>
+<pre><code>&lt;!-- 根据code查询地区信息 --&gt;
+&lt;!-- District findByCode(String code) --&gt;
+&lt;select id=&quot;findByCode&quot;
+resultType=&quot;cn.tedu.store.entity.District&quot;&gt;
+    SELECT
+        id, parent,
+        code, name
+    FROM
+        t_dict_district
+    WHERE
+        code=#{code}
+&lt;/select&gt;
+</code></pre>
+
+<p>添加对应的测试方法：</p>
+<pre><code>@Test
+public void findByCode(){
+    String code=&quot;110000&quot;;
+    District dist=mapper.findByCode(code);
+    System.err.println(dist);
+}
+</code></pre>
+
+<p>为了实现解耦，增加代码的可维护性，规定在一个业务层中，只能调用与之相对应的持久层的方法。但是业务层可以调用其他业务层的方法。</p>
+<p>因此，需要在<code>cn.tedu.store.service.IDistrictService</code>中添加抽象方法：</p>
+<pre><code>District getByCode(String code);
+</code></pre>
+
+<p>在<code>cn.tedu.store.service.impl.DistrictServiceImpl</code>中实现该抽象方法：</p>
+<pre><code>public District getByCode(String code){
+    return findByCode(code);
+}
+
+private District findByCode(String code){
+    return mapper.findByCode(code);
+}
+</code></pre>
+
+<p>在<code>AddressServiceImpl</code>中需要添加<code>@Autowired IDistrictService service;</code>，在方法中调用<code>service</code>的<code>getByCode(String code)</code>查询地区信息。为了简化开发，可以在<code>AddressServiceImpl</code>中声明一个新的方法：</p>
+<pre><code>public String getNameByCode(String code){
+    District dist=service.getByCode(code);
+    return dist==null?&quot;&quot;:dist.getName();
+}
+</code></pre>
+
+<p>然后补全<code>AddressServiceImpl</code>中<code>createAddress()</code>中的代码：</p>
+<pre><code>@Override
+public void createAddress(Integer uid, String username, Address address)
+        throws AddressCountLimitException, InsertException {
+    // 根据uid查询收货地址条数
+    Integer count=countByUid(uid);
+    // 条数是否达到上限 3
+    if(count &gt;= ADDRESS_MAX_COUNT) {
+        // 是：AddressCountLimitException
+        throw new AddressCountLimitException(&quot;新增收货地址异常！最大收货地址条数为&quot;+ADDRESS_MAX_COUNT);
+    }
+
+    // 补全uid
+    address.setUid(uid);
+    // 补全isDefault，根据上面查询到的收货地址条数进行判断
+    int isDefault=count==0 ? 1 : 0;
+    address.setIsDefault(isDefault);
+    // 补全省市区数据：补充省市区名称
+    String provinceName=getNameByCode(address.getProvinceCode().toString());
+    String cityName=getNameByCode(address.getCityCode().toString());
+    String areaName=getNameByCode(address.getAreaCode().toString());
+    address.setProvinceName(provinceName);
+    address.setCityName(cityName);
+    address.setAreaName(areaName);
+
+    // 创建当前时间对象
+    Date now =new Date();
+    // 补全4项日志数据
+    address.setCreatedUser(username);
+    address.setCreatedTime(now);
+    address.setModifiedUser(username);
+    address.setModifiedTime(now);
+    // 执行添加操作
+    saveAddress(address);
+}
+</code></pre>
+
+<p>完成后，在添加地址表单中选择具体的省市区信息，添加一个地址，查看数据库中的省市区名称和省市区编码是否正确添加。</p>
+<h3>34. 收货地址-地址列表-持久层:</h3>
+<p><strong>(a) 规划SQL</strong></p>
+<pre><code>select * from t_address where uid=? order by is_default desc, modified_time desc;
+</code></pre>
+
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>AddressMapper.java</code>接口中添加对应的抽象方法：</p>
+<pre><code>List&lt;Address&gt; findByUid(Integer uid);
+</code></pre>
+
+<p><strong>(c) 配置映射</strong></p>
+<p>在<code>AddressMapper.xml</code>添加一个<code>&lt;resultMap&gt;</code>节点，配置<code>address</code>表字段与<code>Address</code>实体类的映射关系：</p>
+<p>在<code>AddressMapper.xml</code>中配置上述方法的映射：</p>
+<pre><code>&lt;select id=&quot;findByUid&quot;
+    resultMap=&quot;AddressEntityMap&quot;&gt;
+    select
+        *
+    from
+        t_address
+    where 
+        uid=#{uid} 
+    order by 
+        is_default desc, 
+        modified_time desc;
+&lt;/select&gt;
+</code></pre>
+
+<p>在<code>AddressMapperTests</code>中添加测试方法：</p>
+<pre><code>@Test
+public void findByUid() {
+    List&lt;Address&gt; list=mapper.findByUid(10);
+    for(Address address:list) {
+        System.err.println(address);
+    }
+}
+</code></pre>
+
+<h3>35. 收货地址-地址列表-业务层:</h3>
+<p><strong>(a) 规划异常</strong></p>
+<p>无</p>
+<p><strong>(b) 接口和抽象方法</strong></p>
+<p>在<code>IAddressService</code>中添加以下抽象方法：</p>
+<pre><code>List&lt;Address&gt; listByUid(Integer uid);
+</code></pre>
+
+<p><strong>(c) 实现抽象方法</strong></p>
+<p>在<code>AddressServiceImpl</code>中添加持久层接口中定义的抽象方法的私有实现：</p>
+<pre><code>private List&lt;Address&gt; findByUid(Integer uid){
+    List&lt;Address&gt; list=mapper.findByUid(uid);
+    for(Address addr:list){
+        addr.setZip(null);
+        addr.setTel(null);
+        // 将4项日志数据设为null
+    }
+    return list;
+}
+</code></pre>
+
+<p>在<code>AddressServiceImpl</code>中添加业务层抽象方法的实现：</p>
+<pre><code>public List&lt;Address&gt; listByUid(Integer uid){
+    return findByUid(uid);
+}
+</code></pre>
+
+<p>在<code>AddressServiceTests</code>中开发以上方法的测试方法：</p>
+<pre><code>@Test
+public void listByUid() {
+    List&lt;Address&gt; list=service.listByUid(10);
+    for(Address addr:list) {
+        System.err.println(addr);
+    }
+}
+</code></pre>
+
+<h3>36. 收货地址-地址列表-控制器层:</h3>
+<p><strong>(a) 统一异常处理</strong>
+无</p>
+<p><strong>(b) 设计请求</strong></p>
+<pre><code>请求路径：/addresses/list
+请求参数：HttpSession session
+请求方式：Get
+响应数据：JsonResult&lt;List&lt;Address&gt;&gt;
+</code></pre>
+
+<p><strong>(c) 实现请求</strong></p>
+<p>在<code>AddressController</code>中添加方法，处理请求：</p>
+<pre><code>@GetMapping(&quot;list&quot;)
+public JsonResult&lt;List&lt;Address&gt;&gt; listByUid(HttpSession session){
+    Integer uid=getUidFromSession(session);
+    List&lt;Address&gt; data=service.listByUid(uid);
+    return new JsonResult&lt;&gt;(SUCCESS,data);
+}
+</code></pre>
+
+<p>写完后，在浏览器通过<code>localhost:8080/addresses/list</code>，前提是先登录</p>
+<h3>37. 收货地址-地址列表-前端界面:</h3>
+<h3>为什么要在业务层中添加持久层的抽象方法的私有实现</h3>
+<ol>
+<li>一个持久层的抽象方法可能会被业务层在多个方法中重复调用</li>
+<li>在业务层调用持久层方法之前，应该对传入的参数进行合理性验证，如参数类型，是否为Null，参数长度等等</li>
+<li>如果在每个业务层方法中都添加验证的逻辑，则代码重复，可以将这部分验证逻辑放在业务层中的持久层方法实现中去</li>
+<li>同样的，在“增删改”操作后，都需要对结果进行验证，这部分验证逻辑，也可以放在对应的持久层方法实现中</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
